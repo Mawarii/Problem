@@ -3,17 +3,8 @@ stages:
 
 build:
   stage: build
-  cache:
-    - key:
-        files:
-          - ${CI_PROJECT_DIR}/build/index.html
-      paths:
-        - delme
-  parallel:
-    matrix:
-      - ARCH: arm64
   tags:
-    - runner-${ARCH}
+    - runner-arm64
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
@@ -22,6 +13,6 @@ build:
       /kaniko/executor
       --context "${CI_PROJECT_DIR}/build"
       --dockerfile "${CI_PROJECT_DIR}/build/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:${ARCH}"
+      --destination "${CI_REGISTRY_IMAGE}:arm64"
   only:
     - main
