@@ -3,13 +3,19 @@ stages:
 
 build:
   stage: build
+  parallel:
+    matrix:
+      - ARCH: arm64
+  tags:
+    - runner-${ARCH}
   image:
-    name: gcr.io/kaniko-project/executor:v1.23.0-debug
+    name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
   script:
-    - /kaniko/executor
+    - >-
+      /kaniko/executor
       --context "${CI_PROJECT_DIR}/build"
       --dockerfile "${CI_PROJECT_DIR}/build/Dockerfile"
-      --destination "${CI_REGISTRY_IMAGE}:latest"
+      --destination "${CI_REGISTRY_IMAGE}:${ARCH}"
   only:
     - main
