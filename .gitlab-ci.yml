@@ -6,13 +6,12 @@ build:
   cache:
     - key:
         files:
-          - index.html
+          - ${CI_PROJECT_DIR}/build/index.html
       paths:
         - delme
   parallel:
     matrix:
       - ARCH: arm64
-      - ARCH: amd64
   tags:
     - runner-${ARCH}
   image:
