@@ -3,9 +3,16 @@ stages:
 
 build:
   stage: build
+  cache:
+    - key:
+        files:
+          - index.html
+      paths:
+        - delme
   parallel:
     matrix:
       - ARCH: arm64
+      - ARCH: amd64
   tags:
     - runner-${ARCH}
   image:
