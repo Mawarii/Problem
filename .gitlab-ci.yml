@@ -26,9 +26,10 @@ build-images:
 
 # define a job for creating and pushing a merged manifest
 merge-images:
-  stage: merge
-  # tags:
-  #   - runner-xyz
+  stage: build
+  needs:
+    - job: build-images
+      artifacts: false
   image:
     name: mplatform/manifest-tool:alpine
     entrypoint: [""]
