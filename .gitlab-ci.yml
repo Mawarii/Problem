@@ -39,4 +39,4 @@ merge-images:
       from-args 
       --platforms linux/amd64,linux/arm64 
       --template ${CI_REGISTRY_IMAGE}:ARCH 
-      --target ${CI_REGISTRY_IMAGE}
+      --target ${CI_REGISTRY_IMAGE}:merged
