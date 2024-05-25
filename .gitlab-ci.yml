@@ -60,6 +60,6 @@ merge-images-latest:
       from-args
       --platforms linux/amd64,linux/arm64
       --template ${REGISTRY_NAME}/${REGISTRY_PROJECT}/${IMAGE_NAME}:${CI_COMMIT_TAG}-ARCH
-      --target ${REGISTRY_NAME}/${REGISTRY_PROJECT}/${IMAGE_NAME}
+      --target ${REGISTRY_NAME}/${REGISTRY_PROJECT}/${IMAGE_NAME}:latest
   rules:
     - if: '$CI_COMMIT_TAG'
