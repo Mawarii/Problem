@@ -11,7 +11,7 @@ build-images:
       - ARCH: amd64
       - ARCH: arm64
   tags:
-    - saas-linux-large-${ARCH}
+    - saas-linux-medium-${ARCH}
   image:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
